@@ -43,7 +43,6 @@ def get_all_url(doc):
 
 
 def download(link):
-    ext = str()
     if "mp4" in link:
         ext = "mp4"
     elif "jpg" in link:
