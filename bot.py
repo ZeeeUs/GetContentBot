@@ -7,10 +7,10 @@ import main
 bot = telebot.TeleBot(config.configure['TOKEN'])
 
 
-@bot.message_handler(commands=['/start', '/help'])
+@bot.message_handler(commands=['start', 'help'])
 def welcome_message(message):
     bot.send_message(message.chat.id, "Привет! Этот бот поможет тебе скачать фото и видео из Instagram, "
-                                      "просто отправь ссылку!")
+                                      "просто отправь ссылку! 😊")
 
 
 @bot.message_handler(content_types=['text'])
@@ -23,8 +23,10 @@ def accept_url(message):
         try:
             all_url = main.start(url)
             select_item(id_one, all_url)
-        except (AttributeError, requests.exceptions.MissingSchema):
-            bot.send_message(message.chat.id, "Упс! Что-то пошло не так, проверь ссылку и попробуй снова 🤔")
+        except (AttributeError, KeyError, requests.exceptions.MissingSchema):
+            bot.send_message(message.chat.id, "Упс! Что-то пошло не так, проверь ссылку и попробуй снова 🤔 \n"
+                                              "Обратите внимание, что у меня нет возможности работать "
+                                              "с закрытыми аккаунтами 🔒")
 
 
 def select_item(id_one, all_url):
