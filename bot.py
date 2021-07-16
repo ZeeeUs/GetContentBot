@@ -50,7 +50,7 @@ def download(message, content_type, ext):
         try:
             content = start(content_type, ext, url)
             print(content)
-            data = open(content, 'rb')
+            data = open("./media/" + content, 'rb')
             if content_type == "video":
                 bot.send_video(message.chat.id, data)
             elif content_type == "image":

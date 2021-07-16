@@ -24,7 +24,7 @@ def get_content(html, content_type):
 def download(url, ext):
     name = f'dwnld{random.randint(1, 1000)}.{ext}'
     r = requests.get(url)
-    with open(name, 'wb') as f:
+    with open("./media/" + name, 'wb') as f:
         f.write(r.content)
     return name
 
